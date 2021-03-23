@@ -1,6 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+if (import.meta.env.PROD || import.meta.env.MODE === 'demo') {
+  console.log = function () {};
+}
+
+console.log(import.meta.env);
+
+ReactDOM.render(<App />, document.getElementById('root'));

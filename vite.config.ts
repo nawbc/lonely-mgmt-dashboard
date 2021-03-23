@@ -1,11 +1,10 @@
-import { defineConfig } from "vite";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+import { defineConfig } from 'vite';
+import reactRefresh from '@vitejs/plugin-react-refresh';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh()],
   resolve: {
-    alias: [{ find: /^~/, replacement: "" }],
+    alias: [{ find: /^~/, replacement: '' }],
   },
   css: {
     preprocessorOptions: {
@@ -15,9 +14,12 @@ export default defineConfig({
     },
   },
   server: {
+    https: true,
     proxy: {
-      // string shorthand
-      "/api": "https://127.0.0.1:1031/",
+      '/v1': {
+        target: 'https://127.0.0.1:1031',
+        secure: false,
+      },
     },
   },
 });

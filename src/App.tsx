@@ -1,64 +1,33 @@
-import React, { useState } from "react";
-import { flatRoutes, route } from "./route";
-import {
-  PageContainer,
-  ProSettings,
-  RouteContext,
-  RouteContextType,
-} from "@ant-design/pro-layout";
-import ProLayout, { SettingDrawer } from "@ant-design/pro-layout";
-import { Button, Result, Space, Statistic } from "antd";
-import { LikeOutlined } from "@ant-design/icons";
-import { Switch, BrowserRouter, Route, useHistory } from "react-router-dom";
-import { AppManager } from "./page";
+import React from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { LoginAccess } from './components';
+import { route } from './route';
+import { GlobalContext, globalProvider } from './provider';
 
-// console.log(flatRoutes);
-const Dashboard = function () {
-  const [pathname, setPathname] = useState("/");
-  const h = useHistory();
-  return (
-    <ProLayout
-      route={route}
-      location={{
-        pathname,
-      }}
-      fixedHeader
-      menuItemRender={(item, dom) => (
-        <a
-          onClick={() => {
-            h.replace(item.path || "/");
-            // setPathname(item.path || "/");
-          }}
-        >
-          {dom}
-        </a>
-      )}
-      rightContentRender={() => <div></div>}
-      layout="top"
-      navTheme="light"
-      title="爆肝工程师的应用管理"
-      logo={false}
-    >
-      <Switch>
-        {flatRoutes.map((r, i) => {
-          return <Route key={i} {...r} />;
-        })}
-      </Switch>
-    </ProLayout>
-  );
-};
+const queryClient = new QueryClient();
 
 const App = function () {
   return (
     <div
       id="pro-layout"
       style={{
-        height: "100vh",
+        height: '100vh',
       }}
     >
-      <BrowserRouter>
-        <Dashboard />
-      </BrowserRouter>
+      <GlobalContext.Provider value={globalProvider}>
+        <QueryClientProvider client={queryClient}>
+          <HashRouter>
+            <LoginAccess>
+              <Switch>
+                {route.map((r, i) => {
+                  return <Route key={i} {...r} />;
+                })}
+              </Switch>
+            </LoginAccess>
+          </HashRouter>
+        </QueryClientProvider>
+      </GlobalContext.Provider>
     </div>
   );
 };
