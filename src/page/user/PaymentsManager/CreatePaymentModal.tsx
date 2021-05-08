@@ -1,9 +1,9 @@
-import ProForm, { ProFormCheckbox } from "@ant-design/pro-form";
-import { ModalForm } from "@ant-design/pro-form";
-import { Button, FormInstance } from "antd";
-import React, { FC, useRef } from "react";
-import { PaymentData } from "../../../api";
-import "react-markdown-editor-lite/lib/index.css";
+import ProForm, { ProFormCheckbox } from '@ant-design/pro-form';
+import { ModalForm } from '@ant-design/pro-form';
+import { Button, FormInstance } from 'antd';
+import React, { FC, useRef } from 'react';
+import { PaymentData } from '../../../api';
+import 'react-markdown-editor-lite/lib/index.css';
 
 interface CreatePaymentModalProps {
   onFinish: (val: Partial<PaymentData>) => Promise<any>;

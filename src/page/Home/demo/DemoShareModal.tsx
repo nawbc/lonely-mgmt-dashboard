@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 import React, { FC, useState } from 'react';
 import 'react-markdown-editor-lite/lib/index.css';
-import { getShareLinkClient } from '../../../api/demo';
+import { getShareLinkClient } from '../../../api';
 
 interface DemoShareModalProps {
   title: string;

@@ -1,2 +1,2 @@
-export * from "./LoginAccess";
-export * from "./LimitTr";
+export * from './LoginAccess';
+export * from './LimitTr';

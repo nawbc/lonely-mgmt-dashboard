@@ -1,7 +1,7 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import ProTable, { ActionType, ProColumns } from "@ant-design/pro-table";
-import { Button, message, Popconfirm } from "antd";
-import React, { useRef } from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ActionType, ProColumns } from '@ant-design/pro-table';
+import { Button, message, Popconfirm } from 'antd';
+import React, { useRef } from 'react';
 import {
   createGoods,
   CreateGoodsData,
@@ -9,102 +9,102 @@ import {
   disableGoods,
   fetchGoodsList,
   modifyGoods,
-} from "../../../api";
-import { CreateGoodsModal } from "./CreateGoodsModal";
+} from '../../../api';
+import { CreateGoodsModal } from './CreateGoodsModal';
 
 const columns: ProColumns<CreateGoodsData>[] = [
   {
-    title: "应用名称",
-    dataIndex: "goodsName",
+    title: '应用名称',
+    dataIndex: 'goodsName',
     copyable: true,
     width: 100,
     ellipsis: true,
-    fixed: "left",
+    fixed: 'left',
   },
 
   {
-    title: "包名",
-    dataIndex: "packageName",
+    title: '包名',
+    dataIndex: 'packageName',
     copyable: true,
     width: 100,
     ellipsis: true,
   },
 
   {
-    title: "价格",
-    dataIndex: "price",
+    title: '价格',
+    dataIndex: 'price',
     width: 80,
   },
   {
-    title: "折扣价格",
-    dataIndex: "discount",
+    title: '折扣价格',
+    dataIndex: 'discount',
     width: 80,
   },
   {
-    title: "创建者",
+    title: '创建者',
     width: 120,
     ellipsis: true,
-    dataIndex: "createBy",
+    dataIndex: 'createBy',
     render: (_dom, row) => {
       return <span>{row.createBy.username}</span>;
     },
   },
   {
-    title: "支付宝回调url",
-    dataIndex: "alipayCallback",
+    title: '支付宝回调url',
+    dataIndex: 'alipayCallback',
     width: 150,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "支付宝网关url",
-    dataIndex: "alipayGateway",
+    title: '支付宝网关url',
+    dataIndex: 'alipayGateway',
     width: 150,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "分享跳转url",
-    dataIndex: "shareUrl",
+    title: '分享跳转url',
+    dataIndex: 'shareUrl',
     width: 150,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "禁用",
-    dataIndex: "disabled",
+    title: '禁用',
+    dataIndex: 'disabled',
     copyable: true,
     width: 50,
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.disabled ? "red" : "green" }}>
-          {row.disabled ? "是" : "否"}
+        <span style={{ color: row.disabled ? 'red' : 'green' }}>
+          {row.disabled ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    title: "支付描述",
-    dataIndex: "alipayDesc",
-    valueType: "select",
+    title: '支付描述',
+    dataIndex: 'alipayDesc',
+    valueType: 'select',
     width: 120,
     ellipsis: true,
   },
   {
-    title: "操作",
+    title: '操作',
     width: 200,
-    key: "option",
-    valueType: "option",
-    fixed: "right",
+    key: 'option',
+    valueType: 'option',
+    fixed: 'right',
     render: (_node, row, _i, action) => {
       return [
         <CreateGoodsModal
           row={row}
-          title={"修改"}
+          title={'修改'}
           size="small"
           onFinish={async (form) => {
             if (form.price < form.discount) {
-              message.error("折扣价大于价格");
+              message.error('折扣价大于价格');
               return;
             }
 
@@ -136,7 +136,7 @@ const columns: ProColumns<CreateGoodsData>[] = [
           cancelText="取消"
         >
           <Button size="small" type="ghost" danger>
-            {row.disabled ? "解禁" : "禁用"}
+            {row.disabled ? '解禁' : '禁用'}
           </Button>
         </Popconfirm>,
         <Popconfirm
@@ -169,7 +169,7 @@ export const AppManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "应用设置",
+        title: '应用设置',
       }}
     >
       <ProTable<CreateGoodsData>
@@ -195,7 +195,7 @@ export const AppManager = function () {
             title="新建应用"
             onFinish={async (form) => {
               if (form.price < form.discount) {
-                message.error("折扣价大于价格");
+                message.error('折扣价大于价格');
                 return;
               }
               const { data } = await createGoods(form);

@@ -1,8 +1,8 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import React, { FC } from "react";
-import { Tabs } from "antd";
-import { PurchaseLonely } from "./PurchaseLonely";
-import { DemoClient } from "./DemoClient";
+import { PageContainer } from '@ant-design/pro-layout';
+import React, { FC } from 'react';
+import { Tabs } from 'antd';
+import { PurchaseLonely } from './PurchaseLonely';
+import { DemoClient } from './DemoClient';
 
 const { TabPane } = Tabs;
 
@@ -11,7 +11,7 @@ export const DemoHome: FC = function () {
     <PageContainer
       ghost
       header={{
-        title: "Demo -- 支持Lonely",
+        title: 'Demo -- 支持Lonely',
       }}
     >
       <Tabs defaultActiveKey="1">

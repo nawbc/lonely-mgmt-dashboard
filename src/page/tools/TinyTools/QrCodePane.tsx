@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { FC } from "react";
-import { fetchQrCode } from "../../../api";
-import { Button, Image } from "antd";
+import React, { useEffect, useState } from 'react';
+import { FC } from 'react';
+import { fetchQrCode } from '../../../api';
+import { Button, Image } from 'antd';
 
 export const QrCodePane: FC<any> = function (props) {
   const [data, setData] = useState<any>({});
@@ -31,7 +31,7 @@ export const QrCodePane: FC<any> = function (props) {
       <br />
       <br />
       <pre>
-        <code>{JSON.stringify(data, null, "\t")}</code>
+        <code>{JSON.stringify(data, null, '\t')}</code>
       </pre>
     </div>
   );

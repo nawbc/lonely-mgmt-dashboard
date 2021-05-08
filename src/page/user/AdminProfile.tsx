@@ -1,10 +1,10 @@
-import ProForm, { ProFormText, ProFormTextArea } from "@ant-design/pro-form";
-import Field from "@ant-design/pro-field";
-import { PageContainer } from "@ant-design/pro-layout";
-import { Button, Descriptions, FormInstance, message } from "antd";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { GlobalContext } from "../../provider";
-import { loginJwt, modifyAdminInfo } from "../../api";
+import ProForm, { ProFormText, ProFormTextArea } from '@ant-design/pro-form';
+import Field from '@ant-design/pro-field';
+import { PageContainer } from '@ant-design/pro-layout';
+import { Button, Descriptions, FormInstance, message } from 'antd';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { GlobalContext } from '../../provider';
+import { loginJwt, modifyAdminInfo } from '../../api';
 
 export const AdminProfile = function () {
   const ctx = useContext(GlobalContext);
@@ -24,7 +24,7 @@ export const AdminProfile = function () {
     <PageContainer
       ghost
       header={{
-        title: "个人设置",
+        title: '个人设置',
       }}
     >
       <Descriptions column={2}>

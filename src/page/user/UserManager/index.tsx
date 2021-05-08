@@ -1,45 +1,45 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import ProTable, { ActionType, ProColumns } from "@ant-design/pro-table";
-import { Button, message, Popconfirm } from "antd";
-import React, { useRef } from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ActionType, ProColumns } from '@ant-design/pro-table';
+import { Button, message, Popconfirm } from 'antd';
+import React, { useRef } from 'react';
 import {
   ConsumerData,
   deleteConsumer,
   forbidConsumer,
   getAllConsumer,
-} from "../../../api";
+} from '../../../api';
 
 const columns: ProColumns<ConsumerData>[] = [
   {
-    title: "用户id",
-    dataIndex: "id",
+    title: '用户id',
+    dataIndex: 'id',
     width: 100,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "用户名",
-    dataIndex: "username",
+    title: '用户名',
+    dataIndex: 'username',
     width: 100,
     copyable: true,
     ellipsis: true,
   },
   {
-    title: "是否禁用",
-    dataIndex: "forbidden",
+    title: '是否禁用',
+    dataIndex: 'forbidden',
     width: 80,
     search: false,
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.forbidden ? "red" : "green" }}>
-          {row.forbidden ? "是" : "否"}
+        <span style={{ color: row.forbidden ? 'red' : 'green' }}>
+          {row.forbidden ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    title: "分享任务",
-    dataIndex: "shareTask",
+    title: '分享任务',
+    dataIndex: 'shareTask',
     width: 160,
     search: false,
     render: (_dom, row) => {
@@ -49,7 +49,7 @@ const columns: ProColumns<ConsumerData>[] = [
               <div key={String(index)}>
                 <span>{ele.packageName}</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{ele.accomplishShareTask ? "是" : "否"}</span>
+                <span>{ele.accomplishShareTask ? '是' : '否'}</span>
               </div>
             );
           })
@@ -57,24 +57,24 @@ const columns: ProColumns<ConsumerData>[] = [
     },
   },
   {
-    title: "是否关注bilibili",
-    dataIndex: "forbidden",
+    title: '是否关注bilibili',
+    dataIndex: 'forbidden',
     width: 80,
     search: false,
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.followedBilibili ? "red" : "green" }}>
-          {row.followedBilibili ? "是" : "否"}
+        <span style={{ color: row.followedBilibili ? 'red' : 'green' }}>
+          {row.followedBilibili ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    align: "center",
-    title: "操作",
-    width: "164px",
-    key: "option",
-    valueType: "option",
+    align: 'center',
+    title: '操作',
+    width: '164px',
+    key: 'option',
+    valueType: 'option',
     render: (_node, row, i, action) => {
       return [
         <Popconfirm
@@ -99,7 +99,7 @@ const columns: ProColumns<ConsumerData>[] = [
         </Popconfirm>,
         <Popconfirm
           key="2"
-          title={row.forbidden ? "你确定解禁此用户?" : "你确定禁用此用户?"}
+          title={row.forbidden ? '你确定解禁此用户?' : '你确定禁用此用户?'}
           onConfirm={async () => {
             const { data } = await forbidConsumer({
               forbidden: !row.forbidden,
@@ -114,7 +114,7 @@ const columns: ProColumns<ConsumerData>[] = [
           cancelText="取消"
         >
           <Button size="small" type="ghost" danger>
-            {row.forbidden ? "解禁" : "禁用"}
+            {row.forbidden ? '解禁' : '禁用'}
           </Button>
         </Popconfirm>,
       ];
@@ -129,7 +129,7 @@ export const UserManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "用户设置",
+        title: '用户设置',
       }}
     >
       <ProTable<ConsumerData>
@@ -146,7 +146,7 @@ export const UserManager = function () {
         expandable={{
           expandedRowRender: (r) => (
             <pre>
-              <code>{JSON.stringify(r, null, "\t")}</code>
+              <code>{JSON.stringify(r, null, '\t')}</code>
             </pre>
           ),
         }}

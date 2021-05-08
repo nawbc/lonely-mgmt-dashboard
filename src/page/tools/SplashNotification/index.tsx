@@ -1,34 +1,34 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import ProTable, { ActionType, ProColumns } from "@ant-design/pro-table";
-import { Button, message, Popconfirm, Result, Tabs } from "antd";
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ActionType, ProColumns } from '@ant-design/pro-table';
+import { Button, message, Popconfirm, Result, Tabs } from 'antd';
 import {
   CreateGoodsData,
   deleteSplashNotification,
   fetchGoodsList,
   modifySplashNotification,
   SplashNotificationData,
-} from "../../../api";
-import { addSplashNotification, notificationHistory } from "../../../api";
-import { AddNotificationModal } from "./AddNotificationModal";
-import React, { useEffect, useRef, useState } from "react";
-import { LimitTr } from "../../../components";
+} from '../../../api';
+import { addSplashNotification, notificationHistory } from '../../../api';
+import { AddNotificationModal } from './AddNotificationModal';
+import React, { useEffect, useRef, useState } from 'react';
+import { LimitTr } from '../../../components';
 
 const { TabPane } = Tabs;
 
 const columns: ProColumns<SplashNotificationData>[] = [
   {
-    title: "id",
-    dataIndex: "id",
+    title: 'id',
+    dataIndex: 'id',
     render: (_dom, row) => {
       return <LimitTr width={60} content={row.id} />;
     },
   },
   {
-    title: "更新标题",
-    dataIndex: "title",
+    title: '更新标题',
+    dataIndex: 'title',
   },
   {
-    title: "发布时间",
+    title: '发布时间',
     render: (_dom, row) => {
       return (
         <LimitTr content={new Date(row.releaseTimestamp).toLocaleString()} />
@@ -37,56 +37,56 @@ const columns: ProColumns<SplashNotificationData>[] = [
   },
 
   {
-    title: "更新内容",
-    dataIndex: "description",
+    title: '更新内容',
+    dataIndex: 'description',
     render: (_dom, row) => {
       return <LimitTr width={120} content={row.description} />;
     },
   },
   {
-    title: "通知按钮",
-    dataIndex: "buttons",
+    title: '通知按钮',
+    dataIndex: 'buttons',
     render: (_dom, row) => {
       return <LimitTr width={120} content={JSON.stringify(row.buttons)} />;
     },
   },
   {
-    dataIndex: "descriptionHtml",
+    dataIndex: 'descriptionHtml',
     hideInTable: true,
   },
   {
-    title: "强制显示",
+    title: '强制显示',
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.forceDisplay ? "red" : "green" }}>
-          {row.forceDisplay ? "是" : "否"}
+        <span style={{ color: row.forceDisplay ? 'red' : 'green' }}>
+          {row.forceDisplay ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    title: "显示",
+    title: '显示',
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.display ? "red" : "green" }}>
-          {row.display ? "是" : "否"}
+        <span style={{ color: row.display ? 'red' : 'green' }}>
+          {row.display ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    title: "创建者",
-    dataIndex: "createBy",
+    title: '创建者',
+    dataIndex: 'createBy',
     width: 80,
     render: (_dom, row) => {
       return <LimitTr width={80} content={row.releaseBy?.username} />;
     },
   },
   {
-    title: "操作",
-    width: "164px",
-    key: "option",
-    valueType: "option",
+    title: '操作',
+    width: '164px',
+    key: 'option',
+    valueType: 'option',
     render: (_node, row, _i, action) => {
       return [
         <AddNotificationModal
@@ -147,7 +147,7 @@ export const SplashNotificationManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "初屏通知管理",
+        title: '初屏通知管理',
       }}
     >
       {!fetching && goods?.length === 0 && <Result subTitle="请先创建商品" />}

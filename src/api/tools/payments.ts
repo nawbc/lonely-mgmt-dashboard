@@ -1,4 +1,4 @@
-import { req } from "../req";
+import { req } from '../req';
 
 export interface PaymentQrCodeData {
   packageName: string;
@@ -7,5 +7,5 @@ export interface PaymentQrCodeData {
 }
 
 export const fetchQrCode = async function (body: Partial<PaymentQrCodeData>) {
-  return req.post("/v1/pay/qrcode/", body);
+  return req.post('/v1/pay/qrcode/', body);
 };

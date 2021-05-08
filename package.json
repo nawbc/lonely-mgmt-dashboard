@@ -10,7 +10,7 @@
     "deploy:production": "node ./scripts/deploy-production.js",
     "serve": "vite preview",
     "release": "standard-version",
-    "lint": "eslint \"{src,apps,libs}/**/*.{ts,tsx}\" --fix",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "prepare": "husky install",
     "husky:add": "husky add .husky/pre-commit \"npm run lint && git add .\""
   },

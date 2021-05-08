@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FC } from "react";
-import { Button, Modal } from "antd";
+import React, { useState } from 'react';
+import { FC } from 'react';
+import { Button, Modal } from 'antd';
 
 export const FuncPaneButton: FC<any> = function (props) {
   const [visible, setVisible] = useState(false);

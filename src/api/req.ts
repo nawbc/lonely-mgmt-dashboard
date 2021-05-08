@@ -46,7 +46,6 @@ req.interceptors.response.use(
     } else {
       message.error('无响应');
     }
-    // const hasT = localStorage.getItem("t");
 
     return Promise.resolve(error.response);
   },
@@ -104,8 +103,6 @@ reqClient.interceptors.response.use(
     } else {
       message.error('无响应');
     }
-    // const hasT = localStorage.getItem("t");
-
     return Promise.resolve(error.response);
   },
 );

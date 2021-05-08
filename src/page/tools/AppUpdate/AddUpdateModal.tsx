@@ -1,12 +1,12 @@
-import ProForm, { ProFormCheckbox, ProFormText } from "@ant-design/pro-form";
-import { ModalForm } from "@ant-design/pro-form";
-import { Button, FormInstance, message, Modal } from "antd";
-import React, { FC, useRef, useState } from "react";
-import { UpdateRecordData } from "../../../api";
-import { regexps } from "../../../common/utils";
-import MdEditor from "react-markdown-editor-lite";
-import MarkdownIt from "markdown-it";
-import "react-markdown-editor-lite/lib/index.css";
+import ProForm, { ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
+import { ModalForm } from '@ant-design/pro-form';
+import { Button, FormInstance, message, Modal } from 'antd';
+import React, { FC, useRef, useState } from 'react';
+import { UpdateRecordData } from '../../../api';
+import { regexps } from '../../../common/utils';
+import MdEditor from 'react-markdown-editor-lite';
+import MarkdownIt from 'markdown-it';
+import 'react-markdown-editor-lite/lib/index.css';
 
 interface CreateUpdateModalProps {
   onFinish: (val: Partial<UpdateRecordData>) => Promise<any>;
@@ -58,7 +58,7 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
       }}
       onFinish={async (form) => {
         if (!mdContent.html || !mdContent.text!) {
-          message.error("请输入更新内容");
+          message.error('请输入更新内容');
           return;
         }
         if (!visible) {
@@ -79,14 +79,14 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        width={"90%"}
+        width={'90%'}
       >
         <MdEditor
           onChange={(md) => {
             setMdContent(md);
           }}
           defaultValue={mdContent.text}
-          style={{ height: "500px" }}
+          style={{ height: '500px' }}
           renderHTML={(text) => mdParser.render(text)}
         />
       </Modal>
@@ -100,7 +100,7 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
           rules={[
             {
               required: true,
-              message: "请输入",
+              message: '请输入',
             },
           ]}
         />
@@ -114,15 +114,15 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
             rules={[
               {
                 required: true,
-                message: "请输入",
+                message: '请输入',
               },
               {
                 pattern: regexps.androidPackage,
-                message: "不合法的软件包名!",
+                message: '不合法的软件包名!',
               },
               {
                 pattern: regexps.space,
-                message: "禁止输入空格",
+                message: '禁止输入空格',
               },
             ]}
           />
@@ -132,16 +132,16 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
           width="md"
           name="semver"
           label="版本号"
-          disabled={props.disable!.includes("semver")}
+          disabled={props.disable!.includes('semver')}
           initialValue={row?.semver}
           rules={[
             {
               required: true,
-              message: "请输入",
+              message: '请输入',
             },
             {
               pattern: regexps.space,
-              message: "禁止输入空格",
+              message: '禁止输入空格',
             },
           ]}
         />
@@ -166,10 +166,10 @@ export const AddUpdateModal: FC<CreateUpdateModalProps> = function (props) {
         dangerouslySetInnerHTML={{ __html: mdContent.html! }}
         style={{
           marginTop: 10,
-          backgroundColor: "#ebebeb",
-          width: "50%",
+          backgroundColor: '#ebebeb',
+          width: '50%',
           height: 200,
-          overflow: "hidden",
+          overflow: 'hidden',
         }}
       ></div>
     </ModalForm>

@@ -1,5 +1,5 @@
-import { Tooltip } from "antd";
-import React, { FC } from "react";
+import { Tooltip } from 'antd';
+import React, { FC } from 'react';
 
 interface LimitTrProps {
   width?: number;
@@ -12,10 +12,10 @@ export const LimitTr: FC<LimitTrProps> = function (props) {
     <Tooltip title={content}>
       <div
         style={{
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
           width: width,
-          overflow: "hidden",
+          overflow: 'hidden',
         }}
       >
         {content}

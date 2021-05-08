@@ -1,5 +1,5 @@
-import { AdminData } from ".";
-import { req } from "./req";
+import { AdminData } from '.';
+import { req } from './req';
 
 export interface CreateGoodsData {
   alipayCallback: string;
@@ -16,23 +16,23 @@ export interface CreateGoodsData {
 }
 
 export const fetchGoodsList = async function () {
-  return req.post("/v1/goods/query");
+  return req.post('/v1/goods/query');
 };
 
 export const createGoods = async function (body: Partial<CreateGoodsData>) {
-  return req.post("/v1/goods/create", body);
+  return req.post('/v1/goods/create', body);
 };
 
 export const modifyGoods = async function (body: Partial<CreateGoodsData>) {
-  return req.post("/v1/goods/modify", body);
+  return req.post('/v1/goods/modify', body);
 };
 
-export const deleteGoods = async function (body: Pick<CreateGoodsData, "id">) {
-  return req.post("/v1/goods/delete", body);
+export const deleteGoods = async function (body: Pick<CreateGoodsData, 'id'>) {
+  return req.post('/v1/goods/delete', body);
 };
 
 export const disableGoods = async function (
-  body: Pick<CreateGoodsData, "id" | "disabled">
+  body: Pick<CreateGoodsData, 'id' | 'disabled'>
 ) {
-  return req.post("/v1/goods/disable", body);
+  return req.post('/v1/goods/disable', body);
 };

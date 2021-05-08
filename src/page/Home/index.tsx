@@ -1,5 +1,5 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import React from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import React from 'react';
 
 export const AppManager = function () {
 
@@ -7,7 +7,7 @@ export const AppManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "应用设置",
+        title: '应用设置',
       }}
     ></PageContainer>
   );

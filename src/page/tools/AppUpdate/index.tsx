@@ -1,32 +1,32 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import ProTable, { ActionType, ProColumns } from "@ant-design/pro-table";
-import { Button, message, Popconfirm, Result, Tabs } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ActionType, ProColumns } from '@ant-design/pro-table';
+import { Button, message, Popconfirm, Result, Tabs } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   addUpdateRecord,
   CreateGoodsData,
   fetchGoodsList,
   forceUpdate,
   modifyUpdateRecord,
-} from "../../../api";
-import { updateHistory, UpdateRecordData } from "../../../api";
-import { LimitTr } from "../../../components";
-import { AddUpdateModal } from "./AddUpdateModal";
+} from '../../../api';
+import { updateHistory, UpdateRecordData } from '../../../api';
+import { LimitTr } from '../../../components';
+import { AddUpdateModal } from './AddUpdateModal';
 
 const { TabPane } = Tabs;
 
 const columns: ProColumns<UpdateRecordData>[] = [
   {
-    title: "id",
-    dataIndex: "id",
+    title: 'id',
+    dataIndex: 'id',
     hideInTable: true,
   },
   {
-    title: "更新标题",
-    dataIndex: "title",
+    title: '更新标题',
+    dataIndex: 'title',
   },
   {
-    title: "发布时间",
+    title: '发布时间',
     render: (_dom, row) => {
       return (
         <LimitTr content={new Date(row.releaseTimestamp).toLocaleString()} />
@@ -34,44 +34,44 @@ const columns: ProColumns<UpdateRecordData>[] = [
     },
   },
   {
-    title: "版本",
-    dataIndex: "semver",
+    title: '版本',
+    dataIndex: 'semver',
     width: 80,
   },
   {
-    title: "更新内容",
-    dataIndex: "description",
+    title: '更新内容',
+    dataIndex: 'description',
     render: (_dom, row) => {
       return <LimitTr width={120} content={row.description} />;
     },
   },
   {
-    dataIndex: "descriptionHtml",
+    dataIndex: 'descriptionHtml',
     hideInTable: true,
   },
   {
-    title: "强制更新",
+    title: '强制更新',
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.forceUpdate ? "red" : "green" }}>
-          {row.forceUpdate ? "是" : "否"}
+        <span style={{ color: row.forceUpdate ? 'red' : 'green' }}>
+          {row.forceUpdate ? '是' : '否'}
         </span>
       );
     },
   },
   {
-    title: "创建者",
-    dataIndex: "createBy",
+    title: '创建者',
+    dataIndex: 'createBy',
     width: 80,
     render: (_dom, row) => {
       return <LimitTr width={80} content={row.releaseBy?.username} />;
     },
   },
   {
-    title: "操作",
-    width: "164px",
-    key: "option",
-    valueType: "option",
+    title: '操作',
+    width: '164px',
+    key: 'option',
+    valueType: 'option',
     render: (_node, row, _i, action) => {
       return [
         <Popconfirm
@@ -89,14 +89,14 @@ const columns: ProColumns<UpdateRecordData>[] = [
           okText="确认"
           cancelText="取消"
         >
-          <Button size="small" type={row.forceUpdate ? "default" : "primary"}>
-            {row.forceUpdate ? "取消强制" : "强制更新"}
+          <Button size="small" type={row.forceUpdate ? 'default' : 'primary'}>
+            {row.forceUpdate ? '取消强制' : '强制更新'}
           </Button>
         </Popconfirm>,
         <AddUpdateModal
           title="修改"
           size="small"
-          disable={["semver"]}
+          disable={['semver']}
           row={row}
           onFinish={async (body) => {
             const { data } = await modifyUpdateRecord(body);
@@ -133,7 +133,7 @@ export const AppUpdateManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "应用更新管理",
+        title: '应用更新管理',
       }}
     >
       {!fetching && goods?.length === 0 && <Result subTitle="请先创建商品" />}

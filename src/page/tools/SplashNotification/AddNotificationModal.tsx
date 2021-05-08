@@ -1,14 +1,14 @@
-import ProForm, { ProFormCheckbox, ProFormText } from "@ant-design/pro-form";
-import { ModalForm } from "@ant-design/pro-form";
-import { Button, FormInstance, message, Modal, Tag } from "antd";
-import React, { FC, useRef, useState } from "react";
+import ProForm, { ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
+import { ModalForm } from '@ant-design/pro-form';
+import { Button, FormInstance, message, Modal, Tag } from 'antd';
+import React, { FC, useRef, useState } from 'react';
 
-import { regexps, useForceUpdate } from "../../../common/utils";
-import MdEditor from "react-markdown-editor-lite";
-import MarkdownIt from "markdown-it";
-import "react-markdown-editor-lite/lib/index.css";
-import { AddButtonsModal } from "./AddButtonsModal";
-import { SplashNotificationData } from "../../../api";
+import { regexps, useForceUpdate } from '../../../common/utils';
+import MdEditor from 'react-markdown-editor-lite';
+import MarkdownIt from 'markdown-it';
+import 'react-markdown-editor-lite/lib/index.css';
+import { AddButtonsModal } from './AddButtonsModal';
+import { SplashNotificationData } from '../../../api';
 
 interface NotificationModalProps {
   onFinish: (val: Partial<SplashNotificationData>) => Promise<any>;
@@ -66,7 +66,7 @@ export const AddNotificationModal: FC<NotificationModalProps> = function (
       }}
       onFinish={async (form) => {
         if (!mdContent.html || !mdContent.text!) {
-          message.error("请输入通知内容");
+          message.error('请输入通知内容');
           return;
         }
 
@@ -93,7 +93,7 @@ export const AddNotificationModal: FC<NotificationModalProps> = function (
             setMdContent(md);
           }}
           defaultValue={mdContent.text}
-          style={{ height: "500px" }}
+          style={{ height: '500px' }}
           renderHTML={(text) => mdParser.render(text)}
         />
       </Modal>
@@ -107,7 +107,7 @@ export const AddNotificationModal: FC<NotificationModalProps> = function (
           rules={[
             {
               required: true,
-              message: "请输入",
+              message: '请输入',
             },
           ]}
         />
@@ -121,15 +121,15 @@ export const AddNotificationModal: FC<NotificationModalProps> = function (
             rules={[
               {
                 required: true,
-                message: "请输入",
+                message: '请输入',
               },
               {
                 pattern: regexps.androidPackage,
-                message: "不合法的软件包名!",
+                message: '不合法的软件包名!',
               },
               {
                 pattern: regexps.space,
-                message: "禁止输入空格",
+                message: '禁止输入空格',
               },
             ]}
           />
@@ -186,10 +186,10 @@ export const AddNotificationModal: FC<NotificationModalProps> = function (
         dangerouslySetInnerHTML={{ __html: mdContent.html! }}
         style={{
           marginTop: 10,
-          backgroundColor: "#ebebeb",
-          width: "50%",
+          backgroundColor: '#ebebeb',
+          width: '50%',
           height: 200,
-          overflow: "hidden",
+          overflow: 'hidden',
         }}
       ></div>
     </ModalForm>

@@ -1,7 +1,7 @@
-import { PaginationBody } from "../common/interface/page";
-import { ConsumerData } from "./consumer";
-import { CreateGoodsData } from "./goods";
-import { req } from "./req";
+import { PaginationBody } from '../common/interface/page';
+import { ConsumerData } from './consumer';
+import { CreateGoodsData } from './goods';
+import { req } from './req';
 
 export interface PaymentData {
   id: string;
@@ -19,13 +19,13 @@ export interface PaymentData {
 export const queryPayments = async function (
   body: Partial<PaymentData> & PaginationBody
 ) {
-  return req.post("/v1/pay/query", body);
+  return req.post('/v1/pay/query', body);
 };
 
 export const modifyPayment = async function (body: Partial<PaymentData>) {
-  return req.post("/v1/pay/modify", body);
+  return req.post('/v1/pay/modify', body);
 };
 
 export const deletePayment = async function (body: Partial<PaymentData>) {
-  return req.post("/v1/pay/delete", body);
+  return req.post('/v1/pay/delete', body);
 };

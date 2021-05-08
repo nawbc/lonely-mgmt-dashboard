@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
-import { Button, Image, message } from "antd";
-import ProCard from "@ant-design/pro-card";
-import { getQrCodeWithoutLogin, queryTrade } from "../../../api/demo";
+import React, { FC, useEffect, useState } from 'react';
+import { Button, Image, message } from 'antd';
+import ProCard from '@ant-design/pro-card';
+import { getQrCodeWithoutLogin, queryTrade } from '../../../api';
 
-export const PurchaseLonely: FC = function (props) {
+export const PurchaseLonely: FC = function (_props) {
   const [qrData, setQrData] = useState<any>({});
   const [github, setGithub] = useState<any>();
   const [refresh, setRefresh] = useState(false);
@@ -23,7 +23,7 @@ export const PurchaseLonely: FC = function (props) {
   return (
     <div>
       <Button
-        style={{ float: "right" }}
+        style={{ float: 'right' }}
         onClick={() => {
           setRefresh(!refresh);
         }}
@@ -34,10 +34,10 @@ export const PurchaseLonely: FC = function (props) {
         style={{
           width: 400,
           height: 400,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          margin: "0 auto",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          margin: '0 auto',
         }}
       >
         <div>
@@ -54,7 +54,7 @@ export const PurchaseLonely: FC = function (props) {
           支付后点击验证 获取github仓库地址 包含前后端两个仓库
         </span>
         <span style={{ fontSize: 13 }}>该支付 不会保存到数据库</span>
-        <strong style={{ fontSize: 13, color: "red" }}>
+        <strong style={{ fontSize: 13, color: 'red' }}>
           验证之前 请勿刷新，会导致订单丢失
         </strong>
         <br />
@@ -64,10 +64,10 @@ export const PurchaseLonely: FC = function (props) {
 
             if (
               data.data?.alipay_trade_query_response?.trade_status ===
-              "TRADE_SUCCESS"
+              'TRADE_SUCCESS'
             ) {
               message.success(data.message);
-              setGithub("https://github.com/sewerganger/lonely-manager");
+              setGithub('https://github.com/sewerganger/lonely-mgmt');
             }
           }}
         >
@@ -75,8 +75,8 @@ export const PurchaseLonely: FC = function (props) {
         </Button>
       </div>
       <p>
-        Github仓库地址:{" "}
-        {github ? <a href={github}>{github}</a> : "XXXXXXXXXXXXXXXXXXXXXXXXX"}
+        Github仓库地址:{' '}
+        {github ? <a href={github}>{github}</a> : 'XXXXXXXXXXXXXXXXXXXXXXXXX'}
       </p>
 
       <ProCard
@@ -87,7 +87,7 @@ export const PurchaseLonely: FC = function (props) {
         onCollapse={(collapse) => console.log(collapse)}
       >
         <pre>
-          <code>{JSON.stringify(qrData, null, "\t")}</code>
+          <code>{JSON.stringify(qrData, null, '\t')}</code>
         </pre>
       </ProCard>
     </div>

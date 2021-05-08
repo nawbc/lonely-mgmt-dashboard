@@ -1,8 +1,8 @@
-import ProForm, { ProFormList, ProFormText } from "@ant-design/pro-form";
-import { ModalForm } from "@ant-design/pro-form";
-import { Button } from "antd";
-import React, { FC } from "react";
-import "react-markdown-editor-lite/lib/index.css";
+import ProForm, { ProFormList, ProFormText } from '@ant-design/pro-form';
+import { ModalForm } from '@ant-design/pro-form';
+import { Button } from 'antd';
+import React, { FC } from 'react';
+import 'react-markdown-editor-lite/lib/index.css';
 
 interface NotificationModalProps {
   onFinish: (val: Record<string, any>) => Promise<any>;
@@ -39,7 +39,7 @@ export const AddButtonsModal: FC<NotificationModalProps> = function (props) {
         name="buttons"
         initialValue={[]}
         creatorButtonProps={{
-          position: "bottom",
+          position: 'bottom',
         }}
       >
         <ProForm.Group>

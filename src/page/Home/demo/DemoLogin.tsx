@@ -1,22 +1,22 @@
-import React, { FC, useState } from "react";
-import ProCard from "@ant-design/pro-card";
-import ProForm, { ProFormCaptcha, ProFormText } from "@ant-design/pro-form";
-import { MailOutlined, SafetyOutlined, MailTwoTone } from "@ant-design/icons";
-import Bowser from "bowser";
-import { message } from "antd";
+import React, { FC, useState } from 'react';
+import ProCard from '@ant-design/pro-card';
+import ProForm, { ProFormCaptcha, ProFormText } from '@ant-design/pro-form';
+import { MailOutlined, SafetyOutlined, MailTwoTone } from '@ant-design/icons';
+import Bowser from 'bowser';
+import { message } from 'antd';
 import {
   fetchRegisterCaptchaClient,
   loginClient,
   registerClient,
-} from "../../../api/demo";
-import { regexps } from "../../../common/utils";
+} from '../../../api';
+import { regexps } from '../../../common/utils';
 const bowser = Bowser.parse(window.navigator.userAgent);
 
 const deviceInfo = {
   os: bowser.os?.name,
   osVersion: bowser.os?.version,
-  brand: "hp",
-  modelName: "envy13",
+  brand: 'hp',
+  modelName: 'envy13',
 };
 
 interface DemoLoginProps {
@@ -29,14 +29,14 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
       <ProCard
         style={{ width: 350 }}
         tabs={{
-          type: "line",
+          type: 'line',
         }}
       >
         <ProCard.TabPane key="login-tab" tab="登录">
@@ -48,26 +48,26 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
               });
               if (data.code > 0) {
                 message.success(data.message);
-                localStorage.setItem("client_auth", data.data.auth);
+                localStorage.setItem('client_auth', data.data.auth);
                 props.onLogin(true);
               }
             }}
             submitter={{
               searchConfig: {
-                submitText: "登录",
+                submitText: '登录',
               },
               render: (_, dom) => dom.pop(),
               submitButtonProps: {
-                size: "large",
+                size: 'large',
                 style: {
-                  width: "100%",
+                  width: '100%',
                 },
               },
             }}
           >
             <ProFormText
               fieldProps={{
-                size: "large",
+                size: 'large',
                 prefix: <MailOutlined />,
               }}
               name="username"
@@ -75,18 +75,18 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
               rules={[
                 {
                   required: true,
-                  message: "请输入用户名!",
+                  message: '请输入用户名!',
                 },
                 {
                   pattern: regexps.email,
-                  message: "不合法的用户名!",
+                  message: '不合法的用户名!',
                 },
               ]}
             />
             <div style={{ height: 10 }} />
             <ProFormText.Password
               fieldProps={{
-                size: "large",
+                size: 'large',
                 prefix: <SafetyOutlined />,
               }}
               name="password"
@@ -94,7 +94,7 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
               rules={[
                 {
                   required: true,
-                  message: "请输入密码",
+                  message: '请输入密码',
                 },
               ]}
             />
@@ -118,20 +118,20 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
             }}
             submitter={{
               searchConfig: {
-                submitText: "注册",
+                submitText: '注册',
               },
               render: (_, dom) => dom.pop(),
               submitButtonProps: {
-                size: "large",
+                size: 'large',
                 style: {
-                  width: "100%",
+                  width: '100%',
                 },
               },
             }}
           >
             <ProFormText
               fieldProps={{
-                size: "large",
+                size: 'large',
                 prefix: <MailOutlined />,
               }}
               name="username"
@@ -139,18 +139,18 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
               rules={[
                 {
                   required: true,
-                  message: "请输入用户名!",
+                  message: '请输入用户名!',
                 },
                 {
                   pattern: regexps.email,
-                  message: "不合法的用户名!",
+                  message: '不合法的用户名!',
                 },
               ]}
             />
             <div style={{ height: 10 }} />
             <ProFormText.Password
               fieldProps={{
-                size: "large",
+                size: 'large',
                 prefix: <SafetyOutlined />,
               }}
               name="password"
@@ -158,41 +158,41 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
               rules={[
                 {
                   required: true,
-                  message: "请输入密码",
+                  message: '请输入密码',
                 },
                 {
                   pattern: regexps.space,
-                  message: "不能含有空格!",
+                  message: '不能含有空格!',
                 },
               ]}
             />
             <ProFormCaptcha
               fieldProps={{
-                size: "large",
+                size: 'large',
                 prefix: <MailTwoTone />,
               }}
               captchaProps={{
-                size: "large",
+                size: 'large',
               }}
               name="captcha"
               phoneName="username"
               rules={[
                 {
                   required: true,
-                  message: "请输入验证码",
+                  message: '请输入验证码',
                 },
                 {
                   pattern: regexps.space,
-                  message: "不能含有空格!",
+                  message: '不能含有空格!',
                 },
               ]}
               placeholder="请输入验证码"
               onGetCaptcha={async (username) => {
                 const { data } = await fetchRegisterCaptchaClient({ username });
                 if (data?.code > 0) {
-                  message.success(`验证码发送成功!`);
+                  message.success('验证码发送成功!');
                 } else {
-                  message.error(`验证码发送成功!`);
+                  message.error('验证码发送成功!');
                 }
               }}
             />
@@ -202,7 +202,7 @@ export const DemoLogin: FC<DemoLoginProps> = function (props) {
           <br />
           <span>mock的设备信息 注册需要带上</span>
           <pre>
-            <code>{JSON.stringify(tip, null, "\t")}</code>
+            <code>{JSON.stringify(tip, null, '\t')}</code>
           </pre>
         </ProCard.TabPane>
       </ProCard>

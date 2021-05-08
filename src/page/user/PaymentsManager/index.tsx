@@ -1,85 +1,85 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import ProTable, { ActionType, ProColumns } from "@ant-design/pro-table";
-import { Button, message, Popconfirm } from "antd";
-import React, { useRef } from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import ProTable, { ActionType, ProColumns } from '@ant-design/pro-table';
+import { Button, message, Popconfirm } from 'antd';
+import React, { useRef } from 'react';
 
 import {
   deletePayment,
   modifyPayment,
   PaymentData,
   queryPayments,
-} from "../../../api";
-import { CreatePaymentModal } from "./CreatePaymentModal";
+} from '../../../api';
+import { CreatePaymentModal } from './CreatePaymentModal';
 
 const columns: ProColumns<PaymentData>[] = [
   {
-    title: "订单号",
-    dataIndex: "tradeNo",
+    title: '订单号',
+    dataIndex: 'tradeNo',
     width: 150,
     ellipsis: true,
     copyable: true,
   },
   {
-    dataIndex: "id",
+    dataIndex: 'id',
     hideInTable: true,
     search: false,
   },
   {
-    title: "用户名",
+    title: '用户名',
     width: 120,
     copyable: true,
-    dataIndex: "username",
+    dataIndex: 'username',
     renderText(_dom, row) {
       return row.user.username;
     },
   },
   {
-    title: "支付宝订单",
-    dataIndex: "alipayTradeNo",
+    title: '支付宝订单',
+    dataIndex: 'alipayTradeNo',
     width: 150,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "支付宝id",
-    dataIndex: "buyerAlipayId",
+    title: '支付宝id',
+    dataIndex: 'buyerAlipayId',
     width: 80,
     ellipsis: true,
     copyable: true,
   },
   {
-    title: "是否支付",
-    dataIndex: "purchased",
+    title: '是否支付',
+    dataIndex: 'purchased',
     width: 50,
     search: false,
     render: (_dom, row) => {
       return (
-        <span style={{ color: row.purchased ? "red" : "green" }}>
-          {row.purchased ? "是" : "否"}
+        <span style={{ color: row.purchased ? 'red' : 'green' }}>
+          {row.purchased ? '是' : '否'}
         </span>
       );
     },
   },
 
   {
-    title: "支付金额",
-    dataIndex: "payAmount",
+    title: '支付金额',
+    dataIndex: 'payAmount',
     width: 80,
     search: false,
   },
   {
-    title: "商品",
+    title: '商品',
     width: 80,
     render: (_dom, row) => {
       return <span>{row.goods.goodsName}</span>;
     },
   },
   {
-    align: "center",
-    title: "操作",
-    width: "164px",
-    key: "option",
-    valueType: "option",
+    align: 'center',
+    title: '操作',
+    width: '164px',
+    key: 'option',
+    valueType: 'option',
     render: (_node, row, i, action) => {
       return [
         <CreatePaymentModal
@@ -117,7 +117,7 @@ const columns: ProColumns<PaymentData>[] = [
           </Button>
         </Popconfirm>,
         <Popconfirm
-          title={""}
+          title={''}
           onConfirm={async () => {
             // if (data.code > 0) {
             //   message.success(data.message);
@@ -141,7 +141,7 @@ export const PaymentsManager = function () {
     <PageContainer
       ghost
       header={{
-        title: "订单管理",
+        title: '订单管理',
       }}
     >
       <ProTable<PaymentData>
@@ -158,7 +158,7 @@ export const PaymentsManager = function () {
         expandable={{
           expandedRowRender: (r) => (
             <pre>
-              <code>{JSON.stringify(r, null, "\t")}</code>
+              <code>{JSON.stringify(r, null, '\t')}</code>
             </pre>
           ),
         }}

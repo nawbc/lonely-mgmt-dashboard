@@ -1,6 +1,6 @@
-import { Button, Result } from "antd";
-import React from "react";
-import { useHistory } from "react-router-dom";
+import { Button, Result } from 'antd';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 export const NotFoundPage = function () {
   const h = useHistory();
@@ -13,7 +13,7 @@ export const NotFoundPage = function () {
         <Button
           type="primary"
           onClick={() => {
-            h.replace("/dash");
+            h.replace('/dash');
           }}
         >
           返回
