@@ -7,4 +7,3 @@ export * from './tools/notification';
 export * from './tools/payments';
 export * from './tools/tiny';
 export * from './payment';
-export * from './demo';

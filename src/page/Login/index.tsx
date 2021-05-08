@@ -13,16 +13,6 @@ export type TableListItem = {
   createdAt: number;
 };
 
-const DemoLoginUserInfo = function () {
-  return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-      <br />
-      <div>管理员名: demo@demo.com</div>
-      <div>密码: demo123456</div>
-    </div>
-  );
-};
-
 export const Login = function () {
   const h = useHistory();
   const ctx = useContext(GlobalContext);
@@ -101,7 +91,6 @@ export const Login = function () {
             />
             <div style={{ height: 10 }} />
           </ProForm>
-          {import.meta.env.MODE === 'demo' ? <DemoLoginUserInfo /> : ''}
         </ProCard.TabPane>
       </ProCard>
     </div>

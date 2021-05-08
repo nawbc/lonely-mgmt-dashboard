@@ -12,7 +12,6 @@ import {
   PaymentsManager,
   UserManager,
   AdminProfile,
-  DemoHome,
 } from './page';
 
 import { Login } from './page/Login';
@@ -45,15 +44,7 @@ const createFlatDashboardRoutes = function (route: Route): FlatRoute[] {
   return target;
 };
 
-const homePage =
-  import.meta.env.MODE === 'demo' || import.meta.env.DEV
-    ? DemoHome
-    : () => <div></div>;
-
 export const dashboardRoute: Route = {
-  path: '/dash/',
-  component: homePage,
-  exact: true,
   routes: [
     {
       path: '/dash/profile',

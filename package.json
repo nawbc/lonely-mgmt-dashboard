@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "vite",
-    "start:demo": "vite --mode demo",
     "build": "tsc && vite build",
-    "build:demo": "rimraf dist-demo && tsc && vite build --mode demo --outDir dist-demo",
-    "deploy:demo": "node ./scripts/deploy-demo.js",
     "deploy:production": "node ./scripts/deploy-production.js",
     "serve": "vite preview",
     "release": "standard-version",

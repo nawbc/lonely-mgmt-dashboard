@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-if (import.meta.env.PROD || import.meta.env.MODE === 'demo') {
+if (import.meta.env.PROD) {
   console.log = function () {};
 }
 

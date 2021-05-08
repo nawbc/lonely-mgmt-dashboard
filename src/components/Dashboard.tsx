@@ -57,19 +57,6 @@ export const Dashboard: FC = function () {
           </a>
         );
       }}
-      headerContentRender={() => {
-        return [
-          <Button
-            key="btn1"
-            type="link"
-            onClick={() => {
-              h.replace('/dash');
-            }}
-          >
-            主页
-          </Button>,
-        ];
-      }}
       rightContentRender={() => (
         <div>
           <Dropdown overlay={UserSettingMenu()} placement="bottomLeft">
